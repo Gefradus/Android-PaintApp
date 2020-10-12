@@ -1,6 +1,7 @@
 package com.example.rysowanie;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -41,5 +42,12 @@ public class PaintView extends View {
             default:
                 return false;
         }
+        postInvalidate();
+        return false;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        canvas.drawPath(path, brush);
     }
 }
