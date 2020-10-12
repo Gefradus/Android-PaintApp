@@ -13,17 +13,9 @@ public class PaintView extends View {
 
     public LayoutParams params;
     private Path path = new Path();
-    private Paint brush = new Paint();
 
     public PaintView(Context context) {
-        super(context);
-
-        brush.setAntiAlias(true);
-        brush.setColor(Color.MAGENTA);
-        brush.setStyle(Paint.Style.STROKE);
-        brush.setStrokeJoin(Paint.Join.ROUND);
-        brush.setStrokeWidth(8f);
-
+        super(context);;
         params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     }
 
@@ -48,6 +40,8 @@ public class PaintView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawPath(path, brush);
+        canvas.drawPath(path, new MyBrush(Color.BLACK, Paint.Style.STROKE, Paint.Join.ROUND, 8));
     }
+
+
 }
