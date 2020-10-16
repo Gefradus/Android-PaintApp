@@ -10,16 +10,15 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class CanvasView extends View {
-    private Path path;
+    private static final float tolerance = 1;
+    private Path path = new Path();
     private Paint brush;
     private float mX, mY;
     Context context;
-    private static final float Tolerance = 5;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        path = new Path();
         brush = new MyBrush(Color.BLACK, Paint.Style.STROKE, Paint.Join.ROUND, 8);
     }
 
@@ -43,14 +42,14 @@ public class CanvasView extends View {
     public void moveTouche (float x,float y ) {
         float dx = Math.abs(x - mX);
         float dy = Math.abs(y - mY);
-        if(dx >= Tolerance || dy >= Tolerance){
+        if(dx >= tolerance || dy >= tolerance){
             path.quadTo(mX,mY,(x+mX)/2,(y+mY)/2);
             mX = x ;
             mY = y;
 
         }
     }
-    
+
     private void upTouch(){
         path.lineTo(mX,mY);
     }
@@ -72,7 +71,6 @@ public class CanvasView extends View {
                 moveTouche(x,y);
                 invalidate();
                 break ;
-
         }
         return true ;
     }

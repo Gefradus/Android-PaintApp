@@ -2,8 +2,6 @@ package com.example.rysowanie;
 import android.graphics.Paint;
 public class MyBrush extends Paint {
 
-    private int color;
-    private Paint.Style style;
     private Paint.Join join;
     private int width;
 
@@ -25,8 +23,6 @@ public class MyBrush extends Paint {
 
      MyBrush(){
         setAntiAlias(true);
-        setColor(color);
-        setStyle(style);
         setStrokeJoin(join);
         setStrokeWidth(width);
     }
