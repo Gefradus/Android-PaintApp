@@ -17,27 +17,35 @@
             android:background="@drawable/tools_panel"
             android:orientation="horizontal"
             >
-            <Button
+            <ImageButton
                 android:id="@+id/btn1"
                 android:background="@drawable/my_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </Button>
-            <Button
+                android:layout_weight="1"
+                android:src="@drawable/pencil"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                >
+            </ImageButton>
+            <ImageButton
                 android:id="@+id/btn2"
                 android:background="@drawable/my_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </Button>
-            <Button
+                android:layout_weight="1"
+                android:src="@drawable/rubber"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                >
+            </ImageButton>
+            <ImageButton
                 android:id="@+id/btn3"
                 android:background="@drawable/my_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-            </Button>
+            </ImageButton>
             <Button
                 android:id="@+id/btn4"
                 android:background="@drawable/my_button"
@@ -45,13 +53,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
             </Button>
-            <Button
+            <ImageButton
                 android:id="@+id/btn5"
                 android:background="@drawable/my_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-            </Button>
+            </ImageButton>
         </LinearLayout>
 
         <LinearLayout
@@ -80,9 +88,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-
                 tools:ignore="MissingConstraints">
-
             </LinearLayout>
         </LinearLayout>
 
