@@ -1,7 +1,5 @@
 package com.example.rysowanie;
-
 import android.graphics.Paint;
-
 public class MyBrush extends Paint {
 
     private int color;
@@ -16,7 +14,6 @@ public class MyBrush extends Paint {
     public void setWidth(int width) {
         this.width = width;
     }
-
 
     MyBrush(int color, Paint.Style style, Paint.Join join, int width) {
         setAntiAlias(true);
