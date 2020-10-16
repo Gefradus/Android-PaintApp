@@ -12,13 +12,28 @@ import android.view.MotionEvent;
 import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 public class CanvasView extends View {
 
     private List<Stroke> _allStrokes; //all strokes that need to be drawn
     private SparseArray<Stroke> _activeStrokes; //use to retrieve the currently drawn strokes
-    private Random _rdmColor = new Random();
+    private Integer color;
+    private Float width;
+
+    public Float getStrokeWidth() {
+        return width;
+    }
+
+    public void setStrokeWidth(Float width) {
+        this.width = width;
+    }
+
+    public Integer getColor() {
+        return color;
+    }
+
+    public void setColor(Integer color) {
+        this.color = color;
+    }
 
     public CanvasView(Context context, AttributeSet set) {
         super(context, set);
@@ -75,22 +90,22 @@ public class CanvasView extends View {
     }
 
     private void pointDown(int x, int y, int id) {
-        //create a paint with random color
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
-        paint.setColor(_rdmColor.nextInt());
-
-        //create the Stroke
         Point pt = new Point(x, y);
-        Stroke stroke = new Stroke(paint);
+        Stroke stroke = new Stroke(createNewPaint());
         stroke.addPoint(pt);
         _activeStrokes.put(id, stroke);
         _allStrokes.add(stroke);
     }
 
+    private Paint createNewPaint(){
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(width);
+        paint.setColor(color);
+        return paint;
+    }
+
     private void pointMove(int x, int y, int id) {
-        //retrieve the stroke and add new point to its path
         Stroke stroke = _activeStrokes.get(id);
         if (stroke != null) {
             Point pt = new Point(x, y);

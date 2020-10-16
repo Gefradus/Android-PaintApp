@@ -1,3 +1,4 @@
+/*
 package com.example.rysowanie;
 import android.graphics.Paint;
 public class MyBrush extends Paint {
@@ -27,3 +28,4 @@ public class MyBrush extends Paint {
         setStrokeWidth(width);
     }
 }
+*/
