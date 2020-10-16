@@ -5,73 +5,96 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CanvasView extends View {
-    private static final float tolerance = 1;
-    private Path path = new Path();
-    private Paint brush;
-    private float mX, mY;
-    Context context;
 
-    public CanvasView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        this.context = context;
-        brush = new MyBrush(Color.BLACK, Paint.Style.STROKE, Paint.Join.ROUND, 8);
+    private List<Stroke> _allStrokes; //all strokes that need to be drawn
+    private SparseArray<Stroke> _activeStrokes; //use to retrieve the currently drawn strokes
+    private Random _rdmColor = new Random();
+
+    public CanvasView(Context context, AttributeSet set) {
+        super(context, set);
+        _allStrokes = new ArrayList<>();
+        _activeStrokes = new SparseArray<>();
+        setFocusable(true);
+        setFocusableInTouchMode(true);
+        setBackgroundColor(Color.WHITE);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawPath(path,brush);
-    }
-
-    private void startTouch (float x , float y){
-        path.moveTo(x,y);
-        mX = x;
-        mY = y ;
-    }
-
-    public void moveTouche (float x,float y ) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if(dx >= tolerance || dy >= tolerance){
-            path.quadTo(mX,mY,(x+mX)/2,(y+mY)/2);
-            mX = x ;
-            mY = y;
-
+    public void onDraw(Canvas canvas) {
+        if (_allStrokes != null) {
+            for (Stroke stroke: _allStrokes) {
+                if (stroke != null) {
+                    Path path = stroke.getPath();
+                    Paint painter = stroke.getPaint();
+                    if ((path != null) && (painter != null)) {
+                        canvas.drawPath(path, painter);
+                    }
+                }
+            }
         }
-    }
-
-    private void upTouch(){
-        path.lineTo(mX,mY);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                startTouch(x,y);
-                invalidate();
-                break ;
+        final int action = event.getActionMasked();
+        final int pointerCount = event.getPointerCount();
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN: {
+                pointDown((int)event.getX(), (int)event.getY(), event.getPointerId(0));
+                break;
+            }
+            case MotionEvent.ACTION_MOVE: {
+                for (int pc = 0; pc < pointerCount; pc++) {
+                    pointMove((int) event.getX(pc), (int) event.getY(pc), event.getPointerId(pc));
+                }
+                break;
+            }
+            case MotionEvent.ACTION_POINTER_DOWN: {
+                for (int pc = 0; pc < pointerCount; pc++) {
+                    pointDown((int)event.getX(pc), (int)event.getY(pc), event.getPointerId(pc));
+                }
+                break;
+            }
             case MotionEvent.ACTION_UP:
-                upTouch();
-                invalidate();
-                break ;
-            case MotionEvent.ACTION_MOVE:
-                moveTouche(x,y);
-                invalidate();
-                break ;
+            case MotionEvent.ACTION_POINTER_UP: {
+                break;
+            }
         }
-        return true ;
+        invalidate();
+        return true;
+    }
+
+    private void pointDown(int x, int y, int id) {
+        //create a paint with random color
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        paint.setColor(_rdmColor.nextInt());
+
+        //create the Stroke
+        Point pt = new Point(x, y);
+        Stroke stroke = new Stroke(paint);
+        stroke.addPoint(pt);
+        _activeStrokes.put(id, stroke);
+        _allStrokes.add(stroke);
+    }
+
+    private void pointMove(int x, int y, int id) {
+        //retrieve the stroke and add new point to its path
+        Stroke stroke = _activeStrokes.get(id);
+        if (stroke != null) {
+            Point pt = new Point(x, y);
+            stroke.addPoint(pt);
+        }
     }
 }
