@@ -47,11 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         if(id == R.id.pencilBtn) {
             canvasView.setColor(Color.GREEN);
-            //canvasView.setStrokeWidthAndDefault(5f);
         }
         else if(id == R.id.rubberBtn) {
             canvasView.setColor(Color.WHITE);
-            //canvasView.setStrokeWidthAndDefault(15f);
         }
         else if(id == R.id.btn5){
             

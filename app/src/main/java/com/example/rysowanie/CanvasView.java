@@ -33,15 +33,9 @@ public class CanvasView extends View {
     }
 
     public void setStrokeWidthAndDefault(Float strokeWidth) {
-
+        this.defaultWidth = strokeWidth;
         this.width = strokeWidth;
     }
-
-    public void setDefaultWidthAndCountStrokeWidth(Float strokeWidth, ){
-        this.defaultWidth = strokeWidth;
-
-    }
-
 
     public void setColor(Integer color) {
         this.color = color;

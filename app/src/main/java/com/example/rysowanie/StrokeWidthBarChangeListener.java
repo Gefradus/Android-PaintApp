@@ -11,9 +11,7 @@ public class StrokeWidthBarChangeListener implements SeekBar.OnSeekBarChangeList
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-
-    }
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {}
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {}
