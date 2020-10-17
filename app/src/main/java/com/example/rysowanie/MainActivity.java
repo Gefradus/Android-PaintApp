@@ -1,20 +1,20 @@
 package com.example.rysowanie;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-
 import com.divyanshu.colorseekbar.ColorSeekBar;
+import com.example.rysowanie.Strategy.ButtonClickedStrategyEnum;
+import com.example.rysowanie.Strategy.IButtonClickedStrategy;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
-    private ImageButton pencilBtn, rubberBtn, clearBtn;
+    private ImageButton pencilBtn, rubberBtn, clearBtn, btn3;
     private ColorSeekBar colorSeekBar;
 
     @Override
@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rubberBtn = findViewById(R.id.rubberBtn);
         clearBtn = findViewById(R.id.clearBtn);
         colorSeekBar = findViewById(R.id.color_seek_bar);
+        btn3 = findViewById(R.id.btn3);
     }
 
     private void setListeners(){
         clearBtn.setOnClickListener(this);
         pencilBtn.setOnClickListener(this);
         rubberBtn.setOnClickListener(this);
+        btn3.setOnClickListener(this);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
         colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView));
     }
@@ -51,19 +53,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int id = view.getId();
+
+        IButtonClickedStrategy strategy = null;
+
         if(id == R.id.pencilBtn) {
-            canvasView.setDefaultWidthAndCountProgress(5f, strokeWidthBar.getProgress());
-            canvasView.setColor(canvasView.getDefaultColor());
+            strategy = ButtonClickedStrategyEnum.pencil;
         }
         else if(id == R.id.rubberBtn) {
-            canvasView.setDefaultWidthAndCountProgress(12f, strokeWidthBar.getProgress());
-            canvasView.setColor(Color.WHITE);
+            strategy = ButtonClickedStrategyEnum.rubber;
         }
-        else if(id == R.id.clearBtn){
-            canvasView.clearAll();
+        else if(id == R.id.clearBtn) {
+            strategy = ButtonClickedStrategyEnum.clear;
         }
-    }
 
+        strategy.onClickAction(canvasView, strokeWidthBar);
+    }
 
 
 }

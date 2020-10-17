@@ -26,7 +26,7 @@
                 android:src="@drawable/pencil"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
-                >
+                tools:ignore="NestedWeights">
             </ImageButton>
             <ImageButton
                 android:id="@+id/rubberBtn"
@@ -60,7 +60,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/my_button"
-                android:src="@android:drawable/ic_delete"></ImageButton>
+                android:src="@android:drawable/ic_delete" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,13 +75,13 @@
                 android:layout_weight="4"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                tools:ignore="MissingConstraints">
+                tools:ignore="MissingConstraints,NestedWeights">
 
                 <com.example.rysowanie.CanvasView
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:id="@+id/canvas">
-                </com.example.rysowanie.CanvasView>-
+                </com.example.rysowanie.CanvasView>
 
             </LinearLayout>
             <LinearLayout
@@ -143,19 +143,11 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:thumbBorder="4dp"
                             app:thumbBorderColor="@android:color/transparent" />
-
                     </FrameLayout>
+
                 </LinearLayout>
-
             </LinearLayout>
-
-
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

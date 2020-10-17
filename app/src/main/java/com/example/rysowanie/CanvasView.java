@@ -14,42 +14,43 @@ import java.util.ArrayList;
 import java.util.List;
 public class CanvasView extends View {
 
-    private List<Stroke> _allStrokes; //all strokes that need to be drawn
-    private SparseArray<Stroke> _activeStrokes; //use to retrieve the currently drawn strokes
-    private int defaultColor;
-    private int color;
-    private float defaultWidth;
-    private float width;
+    private List<Stroke> _allStrokes;
+    private SparseArray<Stroke> _activeStrokes;
+    private int _defaultColor;
+    private int _color;
+    private float _defaultWidth;
+    private float _width;
+
 
     public float getDefaultWidth() {
-        return defaultWidth;
+        return _defaultWidth;
     }
 
     public int getDefaultColor(){
-        return defaultColor;
+        return _defaultColor;
     }
 
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
-        this.defaultWidth = defaultWidth;
-        width = progress * defaultWidth / 50;
+        _defaultWidth = defaultWidth;
+        _width = progress * defaultWidth / 50;
     }
 
     public void setStrokeWidth(float width) {
-        this.width = width;
+        _width = width;
     }
 
     public void setStrokeWidthAndDefault(float strokeWidth) {
-        defaultWidth = strokeWidth;
-        width = strokeWidth;
+        _defaultWidth = strokeWidth;
+        _width = strokeWidth;
     }
 
     public void setColorAndDefault(int color){
-        this.color = color;
-        defaultColor = color;
+        _color = color;
+        _defaultColor = color;
     }
 
     public void setColor(int color) {
-        this.color = color;
+        this._color = color;
     }
 
     public CanvasView(Context context, AttributeSet set) {
@@ -76,13 +77,14 @@ public class CanvasView extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event)
+    {
         final int action = event.getActionMasked();
         final int pointerCount = event.getPointerCount();
 
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                pointDown((int)event.getX(), (int)event.getY(), event.getPointerId(0));
+                pointDown((int) event.getX(), (int) event.getY(), event.getPointerId(0));
                 break;
             }
             case MotionEvent.ACTION_MOVE: {
@@ -93,7 +95,7 @@ public class CanvasView extends View {
             }
             case MotionEvent.ACTION_POINTER_DOWN: {
                 for (int pc = 0; pc < pointerCount; pc++) {
-                    pointDown((int)event.getX(pc), (int)event.getY(pc), event.getPointerId(pc));
+                    pointDown((int) event.getX(pc), (int) event.getY(pc), event.getPointerId(pc));
                 }
                 break;
             }
@@ -102,6 +104,7 @@ public class CanvasView extends View {
                 break;
             }
         }
+
         invalidate();
         return true;
     }
@@ -117,8 +120,8 @@ public class CanvasView extends View {
     private Paint createNewPaint(){
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(width);
-        paint.setColor(color);
+        paint.setStrokeWidth(_width);
+        paint.setColor(_color);
         return paint;
     }
 
@@ -129,6 +132,7 @@ public class CanvasView extends View {
             stroke.addPoint(pt);
         }
     }
+
 
     public void clearAll(){
         Stroke stroke = new Stroke(createNewPaint());
