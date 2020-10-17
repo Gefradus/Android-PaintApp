@@ -43,10 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setListeners(){
-        clearBtn.setOnClickListener(this);
-        pencilBtn.setOnClickListener(this);
-        rubberBtn.setOnClickListener(this);
-        btn3.setOnClickListener(this);
+        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, btn3);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
         colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView, strokeWidthBar));
     }
