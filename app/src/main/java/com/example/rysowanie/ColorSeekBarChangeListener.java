@@ -17,7 +17,7 @@ public class ColorSeekBarChangeListener implements ColorSeekBar.OnColorChangeLis
     public void onColorChangeListener(int color) {
         _canvasView.setColorAndDefault(color);
         if(_canvasView.isRubber()) {
-            _canvasView.setDefaultWidthAndCountProgress(MainActivity.initialWidth, _strokeWidthBar.getProgress());
+            _canvasView.setDefaultWidthAndCountProgress(MainActivity.getInitialWidth(), _strokeWidthBar.getProgress());
             _canvasView.setRubber(false);
         }
     }

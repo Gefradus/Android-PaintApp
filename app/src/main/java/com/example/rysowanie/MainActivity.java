@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SeekBar strokeWidthBar;
     private ImageButton pencilBtn, rubberBtn, clearBtn, btn3;
     private ColorSeekBar colorSeekBar;
-    public static final float initialWidth = 5f;
+    private static final float initialWidth = 5f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,4 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    public static float getInitialWidth() {
+        return initialWidth;
+    }
 }

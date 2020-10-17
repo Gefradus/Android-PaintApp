@@ -9,7 +9,7 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
     pencil {
         @Override
         public void onClickAction(CanvasView canvasView, SeekBar seekBar) {
-            canvasView.setDefaultWidthAndCountProgress(MainActivity.initialWidth, seekBar.getProgress());
+            canvasView.setDefaultWidthAndCountProgress(MainActivity.getInitialWidth(), seekBar.getProgress());
             canvasView.setColor(canvasView.getDefaultColor());
         }
     },
