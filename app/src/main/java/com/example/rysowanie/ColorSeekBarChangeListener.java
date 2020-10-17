@@ -12,6 +12,7 @@ public class ColorSeekBarChangeListener implements ColorSeekBar.OnColorChangeLis
 
     @Override
     public void onColorChangeListener(int color) {
+        canvasView.setDefaultWidth(5f);
         canvasView.setColorAndDefault(color);
     }
 }

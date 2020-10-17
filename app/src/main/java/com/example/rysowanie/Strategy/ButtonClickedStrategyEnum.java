@@ -2,7 +2,6 @@ package com.example.rysowanie.Strategy;
 
 import android.graphics.Color;
 import android.widget.SeekBar;
-
 import com.example.rysowanie.CanvasView;
 
 public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {

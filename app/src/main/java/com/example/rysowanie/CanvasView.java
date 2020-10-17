@@ -1,5 +1,6 @@
 package com.example.rysowanie;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,7 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
-public class CanvasView extends View {
+public class CanvasView extends View
+{
 
     private List<Stroke> _allStrokes;
     private SparseArray<Stroke> _activeStrokes;
@@ -28,6 +30,10 @@ public class CanvasView extends View {
 
     public int getDefaultColor(){
         return _defaultColor;
+    }
+
+    public void setDefaultWidth(float defaultWidth) {
+        _defaultWidth = defaultWidth;
     }
 
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
@@ -80,6 +86,7 @@ public class CanvasView extends View {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
