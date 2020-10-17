@@ -1,20 +1,24 @@
 package com.example.rysowanie;
 
+import android.widget.SeekBar;
 import com.divyanshu.colorseekbar.ColorSeekBar;
 
 public class ColorSeekBarChangeListener implements ColorSeekBar.OnColorChangeListener {
 
+    private SeekBar _strokeWidthBar;
     private CanvasView _canvasView;
-    private int _progress;
 
-    ColorSeekBarChangeListener(CanvasView canvasView, int progress){
+    ColorSeekBarChangeListener(CanvasView canvasView, SeekBar strokeWidthBar) {
         _canvasView = canvasView;
-        _progress = progress;
+        _strokeWidthBar = strokeWidthBar;
     }
 
     @Override
     public void onColorChangeListener(int color) {
-        _canvasView.setDefaultWidthAndCountProgress(MainActivity.initialWidth, _progress);
         _canvasView.setColorAndDefault(color);
+        if(_canvasView.isRubber()) {
+            _canvasView.setDefaultWidthAndCountProgress(MainActivity.initialWidth, _strokeWidthBar.getProgress());
+            _canvasView.setRubber(false);
+        }
     }
 }

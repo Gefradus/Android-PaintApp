@@ -23,6 +23,15 @@ public class CanvasView extends View
     private float _defaultWidth;
     private float _width;
     private boolean clear;
+    private boolean rubber;
+
+    public boolean isRubber() {
+        return rubber;
+    }
+
+    public void setRubber(boolean rubber) {
+        this.rubber = rubber;
+    }
 
     public float getDefaultWidth() {
         return _defaultWidth;
@@ -52,7 +61,7 @@ public class CanvasView extends View
     }
 
     public void setColor(int color) {
-        this._color = color;
+        _color = color;
     }
 
     public CanvasView(Context context, AttributeSet set) {
