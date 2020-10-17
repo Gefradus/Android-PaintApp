@@ -32,10 +32,6 @@ public class CanvasView extends View
         return _defaultColor;
     }
 
-    public void setDefaultWidth(float defaultWidth) {
-        _defaultWidth = defaultWidth;
-    }
-
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
         _defaultWidth = defaultWidth;
         _width = progress * defaultWidth / 50;

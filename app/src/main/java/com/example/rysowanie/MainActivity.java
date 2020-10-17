@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SeekBar strokeWidthBar;
     private ImageButton pencilBtn, rubberBtn, clearBtn, btn3;
     private ColorSeekBar colorSeekBar;
+    static final float initialWidth = 5f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void init() {
         canvasView = findViewById(R.id.canvas);
         canvasView.setColorAndDefault(Color.BLACK);
-        canvasView.setStrokeWidthAndDefault(5f);
+        canvasView.setStrokeWidthAndDefault(initialWidth);
     }
 
     private void findAllViewsById(){
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rubberBtn.setOnClickListener(this);
         btn3.setOnClickListener(this);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
-        colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView));
+        colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView, strokeWidthBar.getProgress()));
     }
 
     @Override
