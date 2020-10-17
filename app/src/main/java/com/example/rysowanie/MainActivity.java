@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int id = view.getId();
-
-        IButtonClickedStrategy strategy = null;
+        IButtonClickedStrategy strategy;
 
         if(id == R.id.pencilBtn) {
             strategy = ButtonClickedStrategyEnum.pencil;
@@ -64,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if(id == R.id.clearBtn) {
             strategy = ButtonClickedStrategyEnum.clear;
+        }
+        else {
+            strategy = null;
         }
 
         strategy.onClickAction(canvasView, strokeWidthBar);
