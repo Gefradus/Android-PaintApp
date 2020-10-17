@@ -16,29 +16,39 @@ public class CanvasView extends View {
 
     private List<Stroke> _allStrokes; //all strokes that need to be drawn
     private SparseArray<Stroke> _activeStrokes; //use to retrieve the currently drawn strokes
-    private Integer color;
-    private Float defaultWidth;
-    private Float width;
+    private int defaultColor;
+    private int color;
+    private float defaultWidth;
+    private float width;
 
-    public Float getDefaultWidth() {
+    public float getDefaultWidth() {
         return defaultWidth;
     }
 
-    public void setDefaultWidthAndCountProgress(Float defaultWidth, int progress) {
+    public int getDefaultColor(){
+        return defaultColor;
+    }
+
+    public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
         this.defaultWidth = defaultWidth;
         width = progress * defaultWidth / 50;
     }
 
-    public void setStrokeWidth(Float width) {
+    public void setStrokeWidth(float width) {
         this.width = width;
     }
 
-    public void setStrokeWidthAndDefault(Float strokeWidth) {
-        this.defaultWidth = strokeWidth;
-        this.width = strokeWidth;
+    public void setStrokeWidthAndDefault(float strokeWidth) {
+        defaultWidth = strokeWidth;
+        width = strokeWidth;
     }
 
-    public void setColor(Integer color) {
+    public void setColorAndDefault(int color){
+        this.color = color;
+        defaultColor = color;
+    }
+
+    public void setColor(int color) {
         this.color = color;
     }
 

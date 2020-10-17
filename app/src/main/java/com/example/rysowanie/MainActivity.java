@@ -8,24 +8,27 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
+import com.divyanshu.colorseekbar.ColorSeekBar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
     private ImageButton pencilBtn, rubberBtn, clearBtn;
+    private ColorSeekBar colorSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initCanvas();
+        init();
         findAllViewsById();
         setListeners();
     }
 
-    private void initCanvas() {
+    private void init() {
         canvasView = findViewById(R.id.canvas);
-        canvasView.setColor(Color.BLACK);
+        canvasView.setColorAndDefault(Color.BLACK);
         canvasView.setStrokeWidthAndDefault(5f);
     }
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pencilBtn = findViewById(R.id.pencilBtn);
         rubberBtn = findViewById(R.id.rubberBtn);
         clearBtn = findViewById(R.id.clearBtn);
+        colorSeekBar = findViewById(R.id.color_seek_bar);
     }
 
     private void setListeners(){
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pencilBtn.setOnClickListener(this);
         rubberBtn.setOnClickListener(this);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
+        colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView));
     }
 
     @Override
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         if(id == R.id.pencilBtn) {
             canvasView.setDefaultWidthAndCountProgress(5f, strokeWidthBar.getProgress());
-            canvasView.setColor(Color.GRAY);
+            canvasView.setColor(canvasView.getDefaultColor());
         }
         else if(id == R.id.rubberBtn) {
             canvasView.setDefaultWidthAndCountProgress(12f, strokeWidthBar.getProgress());
@@ -57,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(id == R.id.clearBtn){
             canvasView.clearAll();
         }
-
     }
+
+
 
 }
