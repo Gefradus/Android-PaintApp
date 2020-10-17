@@ -107,11 +107,11 @@
                     <FrameLayout
                         android:layout_marginTop="10dp"
                         android:layout_width="32dp"
-                        android:layout_height="80dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center_horizontal">
                         <SeekBar
                             android:id="@+id/strokeWidthBar"
-                            android:layout_width="192dp"
+                            android:layout_width="100dp"
                             android:layout_height="32dp"
                             android:layout_gravity="center"
                             android:progress="50"
