@@ -36,8 +36,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/rubber"
                 android:padding="10dp"
-                android:scaleType="fitCenter"
-                >
+                android:scaleType="fitCenter">
             </ImageButton>
             <ImageButton
                 android:id="@+id/btn3"
@@ -46,13 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
             </ImageButton>
-            <Button
-                android:id="@+id/btn4"
-                android:background="@drawable/my_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            </Button>
+
 
             <ImageButton
                 android:id="@+id/clearBtn"
@@ -144,6 +137,18 @@
                             app:thumbBorder="4dp"
                             app:thumbBorderColor="@android:color/transparent" />
                     </FrameLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/saveBtn"
+                        android:background=""
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/save"
+                        android:scaleType="fitCenter"
+                        android:padding="10dp"
+                        android:layout_weight="1">
+                    </ImageButton>
 
                 </LinearLayout>
             </LinearLayout>
