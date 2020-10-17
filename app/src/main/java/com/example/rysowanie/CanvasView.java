@@ -24,6 +24,11 @@ public class CanvasView extends View {
         return defaultWidth;
     }
 
+    public void setDefaultWidthAndCountProgress(Float defaultWidth, int progress) {
+        this.defaultWidth = defaultWidth;
+        width = progress * defaultWidth / 50;
+    }
+
     public void setStrokeWidth(Float width) {
         this.width = width;
     }

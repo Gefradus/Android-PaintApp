@@ -2,7 +2,6 @@ package com.example.rysowanie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -48,9 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
         if(id == R.id.pencilBtn) {
-            canvasView.setColor(Color.GREEN);
+            canvasView.setDefaultWidthAndCountProgress(5f, strokeWidthBar.getProgress());
+            canvasView.setColor(Color.GRAY);
         }
         else if(id == R.id.rubberBtn) {
+            canvasView.setDefaultWidthAndCountProgress(12f, strokeWidthBar.getProgress());
             canvasView.setColor(Color.WHITE);
         }
         else if(id == R.id.clearBtn){

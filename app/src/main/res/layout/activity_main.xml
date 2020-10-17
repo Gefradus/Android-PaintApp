@@ -109,8 +109,10 @@
                     <SeekBar
                         android:id="@+id/strokeWidthBar"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumbTint="#34CFB0"
                         android:progress="50"
+                        android:max="100"
                         android:rotation="270" />
                 </LinearLayout>
 
@@ -118,7 +120,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="5"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+
+                    >
 
                 </LinearLayout>
 
