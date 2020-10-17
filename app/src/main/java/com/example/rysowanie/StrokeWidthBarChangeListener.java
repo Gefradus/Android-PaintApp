@@ -1,5 +1,4 @@
 package com.example.rysowanie;
-
 import android.widget.SeekBar;
 
 public class StrokeWidthBarChangeListener implements SeekBar.OnSeekBarChangeListener
@@ -11,7 +10,7 @@ public class StrokeWidthBarChangeListener implements SeekBar.OnSeekBarChangeList
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {}
+    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {}

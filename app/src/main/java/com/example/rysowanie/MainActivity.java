@@ -1,6 +1,8 @@
 package com.example.rysowanie;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
-    private ImageButton pencilBtn, rubberBtn, clearAll;
+    private ImageButton pencilBtn, rubberBtn, clearBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +27,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initCanvas() {
         canvasView = findViewById(R.id.canvas);
         canvasView.setColor(Color.BLACK);
-        canvasView.setStrokeWidthAndDefault(10f);
+        canvasView.setStrokeWidthAndDefault(5f);
     }
 
     private void findAllViewsById(){
         strokeWidthBar = findViewById(R.id.strokeWidthBar);
         pencilBtn = findViewById(R.id.pencilBtn);
         rubberBtn = findViewById(R.id.rubberBtn);
-        clearAll = findViewById(R.id.btn5);
+        clearBtn = findViewById(R.id.clearBtn);
     }
 
     private void setListeners(){
-        clearAll.setOnClickListener(this);
+        clearBtn.setOnClickListener(this);
         pencilBtn.setOnClickListener(this);
         rubberBtn.setOnClickListener(this);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(id == R.id.rubberBtn) {
             canvasView.setColor(Color.WHITE);
         }
-        else if(id == R.id.btn5){
-            
+        else if(id == R.id.clearBtn){
+            canvasView.clearAll();
         }
 
     }

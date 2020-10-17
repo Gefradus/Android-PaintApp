@@ -24,10 +24,6 @@ public class CanvasView extends View {
         return defaultWidth;
     }
 
-    public Float getStrokeWidth() {
-        return width;
-    }
-
     public void setStrokeWidth(Float width) {
         this.width = width;
     }
@@ -39,14 +35,6 @@ public class CanvasView extends View {
 
     public void setColor(Integer color) {
         this.color = color;
-    }
-
-    public void set_allStrokes(List<Stroke> _allStrokes) {
-        this._allStrokes = _allStrokes;
-    }
-
-    public void set_activeStrokes(SparseArray<Stroke> _activeStrokes) {
-        this._activeStrokes = _activeStrokes;
     }
 
     public CanvasView(Context context, AttributeSet set) {
@@ -125,5 +113,13 @@ public class CanvasView extends View {
             Point pt = new Point(x, y);
             stroke.addPoint(pt);
         }
+    }
+
+    public void clearAll(){
+        Stroke stroke = new Stroke(createNewPaint());
+        stroke.addPoint(new Point(getWidth(), getHeight()));
+        _activeStrokes.put(0, stroke);
+        _allStrokes.add(stroke);
+        invalidate();
     }
 }
