@@ -20,7 +20,7 @@ public class CanvasView extends View {
     private int _color;
     private float _defaultWidth;
     private float _width;
-
+    private boolean clear;
 
     public float getDefaultWidth() {
         return _defaultWidth;
@@ -63,16 +63,20 @@ public class CanvasView extends View {
     }
 
     public void onDraw(Canvas canvas) {
-        if (_allStrokes != null) {
-            for (Stroke stroke: _allStrokes) {
-                if (stroke != null) {
-                    Path path = stroke.getPath();
-                    Paint painter = stroke.getPaint();
-                    if ((path != null) && (painter != null)) {
-                        canvas.drawPath(path, painter);
+        if(!clear){
+            if (_allStrokes != null) {
+                for (Stroke stroke: _allStrokes) {
+                    if (stroke != null) {
+                        Path path = stroke.getPath();
+                        Paint painter = stroke.getPaint();
+                        if ((path != null) && (painter != null)) {
+                            canvas.drawPath(path, painter);
+                        }
                     }
                 }
             }
+        } else {
+            clear();
         }
     }
 
@@ -133,12 +137,14 @@ public class CanvasView extends View {
         }
     }
 
+    private void clear() {
+        _allStrokes = new ArrayList<>();
+        _activeStrokes = new SparseArray<>();
+        clear = false;
+    }
 
     public void clearAll(){
-        Stroke stroke = new Stroke(createNewPaint());
-        stroke.addPoint(new Point(getWidth(), getHeight()));
-        _activeStrokes.put(0, stroke);
-        _allStrokes.add(stroke);
+        clear = true;
         invalidate();
     }
 }
