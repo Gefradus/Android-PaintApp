@@ -141,13 +141,14 @@
 
                     <ImageButton
                         android:id="@+id/saveBtn"
-                        android:background=""
+                        android:background="#00FFFFFF"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:src="@drawable/save"
                         android:scaleType="fitCenter"
                         android:padding="10dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        tools:ignore="NestedWeights">
                     </ImageButton>
 
                 </LinearLayout>

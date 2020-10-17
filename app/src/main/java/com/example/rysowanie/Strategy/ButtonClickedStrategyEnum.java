@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.MainActivity;
+import com.example.rysowanie.SaveImageFromCanvasViewToGallery;
 
 public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
     pencil {
@@ -25,6 +26,12 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
         @Override
         public void onClickAction(CanvasView canvasView, SeekBar seekBar) {
             canvasView.clearAll();
+        }
+    },
+    save{
+        @Override
+        public void onClickAction(CanvasView canvasView, SeekBar seekBar) {
+            new SaveImageFromCanvasViewToGallery(canvasView);
         }
     }
 }

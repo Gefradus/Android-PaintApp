@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
-    private ImageButton pencilBtn, rubberBtn, clearBtn, btn3;
+    private ImageButton pencilBtn, rubberBtn, clearBtn, btn3, saveBtn;
     private ColorSeekBar colorSeekBar;
     private static final float initialWidth = 5f;
 
@@ -42,10 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clearBtn = findViewById(R.id.clearBtn);
         colorSeekBar = findViewById(R.id.color_seek_bar);
         btn3 = findViewById(R.id.btn3);
+        saveBtn = findViewById(R.id.saveBtn);
     }
 
     private void setListeners(){
-        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, btn3);
+        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, btn3, saveBtn);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
         colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView, strokeWidthBar));
     }
@@ -64,8 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(id == R.id.clearBtn) {
             strategy = ButtonClickedStrategyEnum.clear;
         }
-        else {
+        else if(id == R.id.btn3){
             strategy = null;
+        }
+        else {
+            strategy = ButtonClickedStrategyEnum.save;
         }
 
         strategy.onClickAction(canvasView, strokeWidthBar);
