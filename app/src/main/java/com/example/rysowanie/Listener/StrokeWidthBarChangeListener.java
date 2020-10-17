@@ -1,11 +1,13 @@
-package com.example.rysowanie;
+package com.example.rysowanie.Listener;
 import android.widget.SeekBar;
+
+import com.example.rysowanie.CanvasView;
 
 public class StrokeWidthBarChangeListener implements SeekBar.OnSeekBarChangeListener
 {
     private CanvasView canvasView;
 
-    StrokeWidthBarChangeListener(CanvasView canvasView){
+    public StrokeWidthBarChangeListener(CanvasView canvasView){
         this.canvasView = canvasView;
     }
 

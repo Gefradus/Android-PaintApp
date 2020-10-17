@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import com.divyanshu.colorseekbar.ColorSeekBar;
+import com.example.rysowanie.Listener.ColorSeekBarChangeListener;
+import com.example.rysowanie.Listener.StrokeWidthBarChangeListener;
 import com.example.rysowanie.Strategy.ButtonClickedStrategyEnum;
 import com.example.rysowanie.Strategy.IButtonClickedStrategy;
 
