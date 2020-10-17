@@ -19,20 +19,20 @@ public class CanvasView extends View {
     private Integer color;
     private Float width;
 
-    public Float getStrokeWidth() {
-        return width;
-    }
-
     public void setStrokeWidth(Float width) {
         this.width = width;
     }
 
-    public Integer getColor() {
-        return color;
-    }
-
     public void setColor(Integer color) {
         this.color = color;
+    }
+
+    public void set_allStrokes(List<Stroke> _allStrokes) {
+        this._allStrokes = _allStrokes;
+    }
+
+    public void set_activeStrokes(SparseArray<Stroke> _activeStrokes) {
+        this._activeStrokes = _activeStrokes;
     }
 
     public CanvasView(Context context, AttributeSet set) {

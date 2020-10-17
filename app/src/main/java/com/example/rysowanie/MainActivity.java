@@ -2,6 +2,7 @@ package com.example.rysowanie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.ImageButton;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CanvasView canvasView;
-    private ImageButton pencilBtn, rubberBtn;
+    private ImageButton pencilBtn, rubberBtn, clearAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         pencilBtn = findViewById(R.id.pencilBtn);
         rubberBtn = findViewById(R.id.rubberBtn);
+        clearAll = findViewById(R.id.btn5);
+
+        clearAll.setOnClickListener(this);
         pencilBtn.setOnClickListener(this);
         rubberBtn.setOnClickListener(this);
     }
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if(id == R.id.rubberBtn) {
             canvasView.setColor(Color.WHITE);
             canvasView.setStrokeWidth(15f);
+        } else if(id == R.id.btn5){
+            
         }
 
     }
