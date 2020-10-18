@@ -2,6 +2,7 @@ package com.example.rysowanie;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final float initialWidth = 7f;
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
-    private ImageButton pencilBtn, rubberBtn, clearBtn, sprayBtn, saveBtn;
+    private ImageButton pencilBtn, rubberBtn, clearBtn, fillBtn, saveBtn, sprayBtn;
     private ColorSeekBar colorSeekBar;
 
 
@@ -34,8 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void init() {
         canvasView = findViewById(R.id.canvas);
-        canvasView.setColorAndDefault(Color.BLACK);
-        canvasView.setStrokeWidthAndDefault(initialWidth);
+        canvasView.setColor(Color.BLACK);
+        canvasView.setDefaultColor(Color.BLACK);
+        canvasView.setWidth(initialWidth);
+        canvasView.setDefaultWidth(initialWidth);
+        canvasView.setPaintStyle(Paint.Style.STROKE);
     }
 
     private void findAllViewsById(){
@@ -44,12 +48,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rubberBtn = findViewById(R.id.rubberBtn);
         clearBtn = findViewById(R.id.clearBtn);
         colorSeekBar = findViewById(R.id.color_seek_bar);
-        sprayBtn = findViewById(R.id.sprayBtn);
+        fillBtn = findViewById(R.id.fillBtn);
         saveBtn = findViewById(R.id.saveBtn);
+        sprayBtn = findViewById(R.id.sprayBtn);
     }
 
     private void setListeners(){
-        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, sprayBtn, saveBtn);
+        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, fillBtn, saveBtn, sprayBtn);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
         colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView, strokeWidthBar));
     }
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        IButtonClickedStrategy strategy = null;
+        IButtonClickedStrategy strategy;
 
         if(id == R.id.pencilBtn) {
             strategy = ButtonClickedStrategyEnum.pencil;
@@ -68,16 +73,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(id == R.id.clearBtn) {
             strategy = ButtonClickedStrategyEnum.clear;
         }
-        else if(id == R.id.sprayBtn){
+        else if(id == R.id.fillBtn) {
+            strategy = ButtonClickedStrategyEnum.fill;
+        }
+        else if(id == R.id.sprayBtn) {
             strategy = ButtonClickedStrategyEnum.spray;
         }
-        else if(id == R.id.saveBtn){
+        else {
             strategy = ButtonClickedStrategyEnum.save;
         }
 
         strategy.onClickAction(canvasView, strokeWidthBar, this);
     }
-
 
 
 }

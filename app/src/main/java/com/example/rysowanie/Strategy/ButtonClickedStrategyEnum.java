@@ -2,6 +2,7 @@ package com.example.rysowanie.Strategy;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.ConfirmSaveDialog;
@@ -13,6 +14,8 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
         public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity) {
             canvasView.setDefaultWidthAndCountProgress(MainActivity.getInitialWidth(), seekBar.getProgress());
             canvasView.setColor(canvasView.getDefaultColor());
+            canvasView.setPaintStyle(Paint.Style.STROKE);
+            canvasView.setSpray(false);
         }
     },
     rubber {
@@ -20,7 +23,9 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
         public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity) {
             canvasView.setDefaultWidthAndCountProgress(16f, seekBar.getProgress());
             canvasView.setColor(Color.WHITE);
+            canvasView.setPaintStyle(Paint.Style.STROKE);
             canvasView.setRubber(true);
+            canvasView.setSpray(false);
         }
     },
     clear {
@@ -35,10 +40,17 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
             new ConfirmSaveDialog(activity, canvasView);
         }
     },
-    spray{
+    fill {
         @Override
         public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity){
-
+            canvasView.setPaintStyle(Paint.Style.FILL);
+            canvasView.setSpray(false);
+        }
+    },
+    spray {
+        @Override
+        public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity){
+            canvasView.setSpray(true);
         }
     }
 }

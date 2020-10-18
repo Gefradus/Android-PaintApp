@@ -39,13 +39,24 @@
                 android:scaleType="fitCenter">
             </ImageButton>
             <ImageButton
-                android:id="@+id/sprayBtn"
+                android:id="@+id/fillBtn"
                 android:background="@drawable/my_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </ImageButton>
+                android:src="@drawable/fill"
+                android:scaleType="fitCenter"
+                android:padding="12dp"
+                android:layout_weight="1" />
 
+            <ImageButton
+                android:id="@+id/sprayBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_button"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/spray"/>
 
             <ImageButton
                 android:id="@+id/clearBtn"

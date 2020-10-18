@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
@@ -18,18 +19,20 @@ import lombok.Setter;
 
 public class CanvasView extends View
 {
-    @Getter
-    private int defaultColor;
+    @Setter
+    private Paint.Style paintStyle;
+    @Setter
+    private boolean spray;
+    @Setter
+    private float width;
     @Setter
     private int color;
-    @Getter
+    @Getter @Setter
+    private int defaultColor;
+    @Getter @Setter
     private float defaultWidth;
     @Getter @Setter
-    private float width;
-    @Getter @Setter
     private boolean rubber;
-    @Getter @Setter
-    private boolean spray;
     private boolean clear;
     private List<Stroke> allStrokes;
     private SparseArray<Stroke> activeStrokes;
@@ -37,16 +40,6 @@ public class CanvasView extends View
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
         this.defaultWidth = defaultWidth;
         width = progress * defaultWidth / 100;
-    }
-
-    public void setStrokeWidthAndDefault(float strokeWidth) {
-        defaultWidth = strokeWidth;
-        width = strokeWidth;
-    }
-
-    public void setColorAndDefault(int color){
-        this.color = color;
-        defaultColor = color;
     }
 
     public CanvasView(Context context, AttributeSet set) {
@@ -59,22 +52,28 @@ public class CanvasView extends View
     }
 
     public void onDraw(Canvas canvas) {
-        if(!clear){
-            if (allStrokes != null) {
-                for (Stroke stroke: allStrokes) {
-                    if (stroke != null) {
-                        Path path = stroke.getPath();
-                        Paint painter = stroke.getPaint();
-                        if ((path != null) && (painter != null)) {
-                            canvas.drawPath(path, painter);
-                        }
+        if(clear) {
+            clear();
+        }
+        else {
+            drawNormalPath(canvas);
+        }
+    }
+
+    private void drawNormalPath(Canvas canvas){
+        if (allStrokes != null) {
+            for (Stroke stroke: allStrokes) {
+                if (stroke != null) {
+                    Path path = stroke.getPath();
+                    Paint painter = stroke.getPaint();
+                    if ((path != null) && (painter != null)) {
+                        canvas.drawPath(path, painter);
                     }
                 }
             }
-        } else {
-            clear();
         }
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -112,19 +111,12 @@ public class CanvasView extends View
 
     private void pointDown(int x, int y, int id) {
         Point pt = new Point(x, y);
-        Stroke stroke = new Stroke(createNewPaint());
+        Stroke stroke = new Stroke(new MyPaint(paintStyle, width, color, spray));
         stroke.addPoint(pt);
         activeStrokes.put(id, stroke);
         allStrokes.add(stroke);
     }
 
-    private Paint createNewPaint(){
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(width);
-        paint.setColor(color);
-        return paint;
-    }
 
     private void pointMove(int x, int y, int id) {
         Stroke stroke = activeStrokes.get(id);
