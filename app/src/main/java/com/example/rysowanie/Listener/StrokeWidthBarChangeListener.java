@@ -1,15 +1,12 @@
 package com.example.rysowanie.Listener;
 import android.widget.SeekBar;
-
 import com.example.rysowanie.CanvasView;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class StrokeWidthBarChangeListener implements SeekBar.OnSeekBarChangeListener
 {
     private CanvasView canvasView;
-
-    public StrokeWidthBarChangeListener(CanvasView canvasView){
-        this.canvasView = canvasView;
-    }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}

@@ -18,8 +18,6 @@ import lombok.Setter;
 
 public class CanvasView extends View
 {
-    private List<Stroke> allStrokes;
-    private SparseArray<Stroke> activeStrokes;
     @Getter
     private int defaultColor;
     @Setter
@@ -28,11 +26,13 @@ public class CanvasView extends View
     private float defaultWidth;
     @Getter @Setter
     private float width;
-    private boolean clear;
     @Getter @Setter
     private boolean rubber;
+    @Getter @Setter
     private boolean spray;
-
+    private boolean clear;
+    private List<Stroke> allStrokes;
+    private SparseArray<Stroke> activeStrokes;
 
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
         this.defaultWidth = defaultWidth;
@@ -48,7 +48,6 @@ public class CanvasView extends View
         this.color = color;
         defaultColor = color;
     }
-
 
     public CanvasView(Context context, AttributeSet set) {
         super(context, set);

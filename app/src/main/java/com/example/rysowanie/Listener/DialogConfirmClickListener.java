@@ -5,15 +5,14 @@ import android.content.DialogInterface;
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.SaveImageFromCanvasViewToGallery;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class DialogConfirmClickListener implements DialogInterface.OnClickListener {
 
     private Activity _activity;
     private CanvasView view;
 
-    public DialogConfirmClickListener(Activity activity, CanvasView canvasView){
-        _activity = activity;
-        view = canvasView;
-    }
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {

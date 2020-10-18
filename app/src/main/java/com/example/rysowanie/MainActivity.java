@@ -11,14 +11,17 @@ import com.example.rysowanie.Listener.ColorSeekBarChangeListener;
 import com.example.rysowanie.Listener.StrokeWidthBarChangeListener;
 import com.example.rysowanie.Strategy.ButtonClickedStrategyEnum;
 import com.example.rysowanie.Strategy.IButtonClickedStrategy;
+import lombok.Getter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @Getter
+    private static final float initialWidth = 7f;
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
     private ImageButton pencilBtn, rubberBtn, clearBtn, sprayBtn, saveBtn;
     private ColorSeekBar colorSeekBar;
-    private static final float initialWidth = 7f;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +79,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public static float getInitialWidth() {
-        return initialWidth;
-    }
+
 }
