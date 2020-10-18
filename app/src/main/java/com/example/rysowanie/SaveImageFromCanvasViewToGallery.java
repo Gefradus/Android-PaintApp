@@ -28,14 +28,12 @@ public class SaveImageFromCanvasViewToGallery
         }
     }
 
-
     private File createFile(String path)
     {
         int i = 0;
         File file = null;
         while(i == 0 || file.exists()) {
-            i++;
-            file = new File(path + "/image" + i + ".png");
+            file = new File(path + "/image" + ++i + ".png");
         }
         return file;
     }
@@ -47,5 +45,6 @@ public class SaveImageFromCanvasViewToGallery
         view.draw(canvas);
         return bitmap;
     }
+
 
 }

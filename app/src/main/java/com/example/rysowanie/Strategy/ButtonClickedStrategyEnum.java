@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
+import com.example.rysowanie.ConfirmSaveDialog;
 import com.example.rysowanie.MainActivity;
 import com.example.rysowanie.SaveImageFromCanvasViewToGallery;
 
@@ -32,7 +33,7 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
     save{
         @Override
         public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity) {
-            new SaveImageFromCanvasViewToGallery(activity, canvasView);
+            new ConfirmSaveDialog(activity, canvasView);
         }
     }
 }
