@@ -9,7 +9,7 @@ public class ConfirmSaveDialog
     public ConfirmSaveDialog(final Activity activity, final CanvasView view)
     {
         new AlertDialog.Builder(view.getContext()).setMessage(R.string.confirm)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

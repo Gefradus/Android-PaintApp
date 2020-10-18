@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Rysowanie</string>
     <string name="confirm">Czy chcesz zapisać swoją pracę?</string>
+    <string name="yes">Tak</string>
 </resources>
