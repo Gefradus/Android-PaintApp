@@ -6,7 +6,6 @@ import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.ConfirmSaveDialog;
 import com.example.rysowanie.MainActivity;
-import com.example.rysowanie.SaveImageFromCanvasViewToGallery;
 
 public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
     pencil {
