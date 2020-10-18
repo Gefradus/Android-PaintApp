@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             strategy = ButtonClickedStrategyEnum.clear;
         }
         else if(id == R.id.btn3){
-
+            
         }
         else if(id == R.id.saveBtn){
             strategy = ButtonClickedStrategyEnum.save;
         }
 
-        strategy.onClickAction(canvasView, strokeWidthBar);
+        strategy.onClickAction(canvasView, strokeWidthBar, this);
     }
 
 

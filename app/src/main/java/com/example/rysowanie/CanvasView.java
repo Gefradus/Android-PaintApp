@@ -155,7 +155,7 @@ public class CanvasView extends View
         clear = false;
     }
 
-    public void clearAll(){
+    public void clearAll() {
         clear = true;
         invalidate();
     }
