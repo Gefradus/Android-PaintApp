@@ -39,7 +39,7 @@
                 android:scaleType="fitCenter">
             </ImageButton>
             <ImageButton
-                android:id="@+id/btn3"
+                android:id="@+id/sprayBtn"
                 android:background="@drawable/my_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

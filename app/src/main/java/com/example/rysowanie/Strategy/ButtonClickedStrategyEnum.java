@@ -34,5 +34,11 @@ public enum ButtonClickedStrategyEnum implements IButtonClickedStrategy {
         public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity) {
             new ConfirmSaveDialog(activity, canvasView);
         }
+    },
+    spray{
+        @Override
+        public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity){
+
+        }
     }
 }

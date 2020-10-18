@@ -23,6 +23,8 @@ android {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.divyanshu.colorseekbar:colorseekbar:1.0.2'
     implementation 'androidx.appcompat:appcompat:1.1.0'

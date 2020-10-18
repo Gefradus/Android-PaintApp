@@ -13,61 +13,47 @@ import android.view.MotionEvent;
 import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
 public class CanvasView extends View
 {
-
-    private List<Stroke> _allStrokes;
-    private SparseArray<Stroke> _activeStrokes;
-    private int _defaultColor;
-    private int _color;
-    private float _defaultWidth;
-    private float _width;
+    private List<Stroke> allStrokes;
+    private SparseArray<Stroke> activeStrokes;
+    @Getter
+    private int defaultColor;
+    @Setter
+    private int color;
+    @Getter
+    private float defaultWidth;
+    @Getter @Setter
+    private float width;
     private boolean clear;
+    @Getter @Setter
     private boolean rubber;
+    private boolean spray;
 
-    public boolean isRubber() {
-        return rubber;
-    }
-
-    public void setRubber(boolean rubber) {
-        this.rubber = rubber;
-    }
-
-    public float getDefaultWidth() {
-        return _defaultWidth;
-    }
-
-    public int getDefaultColor(){
-        return _defaultColor;
-    }
 
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
-        _defaultWidth = defaultWidth;
-        _width = progress * defaultWidth / 100;
-    }
-
-    public void setStrokeWidth(float width) {
-        _width = width;
+        this.defaultWidth = defaultWidth;
+        width = progress * defaultWidth / 100;
     }
 
     public void setStrokeWidthAndDefault(float strokeWidth) {
-        _defaultWidth = strokeWidth;
-        _width = strokeWidth;
+        defaultWidth = strokeWidth;
+        width = strokeWidth;
     }
 
     public void setColorAndDefault(int color){
-        _color = color;
-        _defaultColor = color;
+        this.color = color;
+        defaultColor = color;
     }
 
-    public void setColor(int color) {
-        _color = color;
-    }
 
     public CanvasView(Context context, AttributeSet set) {
         super(context, set);
-        _allStrokes = new ArrayList<>();
-        _activeStrokes = new SparseArray<>();
+        allStrokes = new ArrayList<>();
+        activeStrokes = new SparseArray<>();
         setFocusable(true);
         setFocusableInTouchMode(true);
         setBackgroundColor(Color.WHITE);
@@ -75,8 +61,8 @@ public class CanvasView extends View
 
     public void onDraw(Canvas canvas) {
         if(!clear){
-            if (_allStrokes != null) {
-                for (Stroke stroke: _allStrokes) {
+            if (allStrokes != null) {
+                for (Stroke stroke: allStrokes) {
                     if (stroke != null) {
                         Path path = stroke.getPath();
                         Paint painter = stroke.getPaint();
@@ -129,20 +115,20 @@ public class CanvasView extends View
         Point pt = new Point(x, y);
         Stroke stroke = new Stroke(createNewPaint());
         stroke.addPoint(pt);
-        _activeStrokes.put(id, stroke);
-        _allStrokes.add(stroke);
+        activeStrokes.put(id, stroke);
+        allStrokes.add(stroke);
     }
 
     private Paint createNewPaint(){
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(_width);
-        paint.setColor(_color);
+        paint.setStrokeWidth(width);
+        paint.setColor(color);
         return paint;
     }
 
     private void pointMove(int x, int y, int id) {
-        Stroke stroke = _activeStrokes.get(id);
+        Stroke stroke = activeStrokes.get(id);
         if (stroke != null) {
             Point pt = new Point(x, y);
             stroke.addPoint(pt);
@@ -150,8 +136,8 @@ public class CanvasView extends View
     }
 
     private void clear() {
-        _allStrokes = new ArrayList<>();
-        _activeStrokes = new SparseArray<>();
+        allStrokes = new ArrayList<>();
+        activeStrokes = new SparseArray<>();
         clear = false;
     }
 

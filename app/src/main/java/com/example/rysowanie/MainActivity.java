@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
-    private ImageButton pencilBtn, rubberBtn, clearBtn, btn3, saveBtn;
+    private ImageButton pencilBtn, rubberBtn, clearBtn, sprayBtn, saveBtn;
     private ColorSeekBar colorSeekBar;
     private static final float initialWidth = 7f;
 
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rubberBtn = findViewById(R.id.rubberBtn);
         clearBtn = findViewById(R.id.clearBtn);
         colorSeekBar = findViewById(R.id.color_seek_bar);
-        btn3 = findViewById(R.id.btn3);
+        sprayBtn = findViewById(R.id.sprayBtn);
         saveBtn = findViewById(R.id.saveBtn);
     }
 
     private void setListeners(){
-        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, btn3, saveBtn);
+        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, sprayBtn, saveBtn);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
         colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView, strokeWidthBar));
     }
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(id == R.id.clearBtn) {
             strategy = ButtonClickedStrategyEnum.clear;
         }
-        else if(id == R.id.btn3){
-
+        else if(id == R.id.sprayBtn){
+            strategy = ButtonClickedStrategyEnum.spray;
         }
         else if(id == R.id.saveBtn){
             strategy = ButtonClickedStrategyEnum.save;

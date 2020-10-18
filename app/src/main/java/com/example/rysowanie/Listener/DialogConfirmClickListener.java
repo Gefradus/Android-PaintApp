@@ -2,7 +2,6 @@ package com.example.rysowanie.Listener;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.SaveImageFromCanvasViewToGallery;
 
