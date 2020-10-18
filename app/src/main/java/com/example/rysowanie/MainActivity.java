@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SeekBar strokeWidthBar;
     private ImageButton pencilBtn, rubberBtn, clearBtn, btn3, saveBtn;
     private ColorSeekBar colorSeekBar;
-    private static final float initialWidth = 5f;
+    private static final float initialWidth = 7f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             strategy = ButtonClickedStrategyEnum.clear;
         }
         else if(id == R.id.btn3){
-            
+
         }
         else if(id == R.id.saveBtn){
             strategy = ButtonClickedStrategyEnum.save;

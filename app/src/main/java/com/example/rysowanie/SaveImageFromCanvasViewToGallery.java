@@ -8,7 +8,8 @@ import android.view.View;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class SaveImageFromCanvasViewToGallery {
+public class SaveImageFromCanvasViewToGallery
+{
     public SaveImageFromCanvasViewToGallery(Activity activity, CanvasView canvasView)
     {
         canvasView.setDrawingCacheEnabled(true);

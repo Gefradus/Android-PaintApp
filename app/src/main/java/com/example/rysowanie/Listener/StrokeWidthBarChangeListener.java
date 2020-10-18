@@ -19,6 +19,6 @@ public class StrokeWidthBarChangeListener implements SeekBar.OnSeekBarChangeList
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        canvasView.setStrokeWidth(seekBar.getProgress() * canvasView.getDefaultWidth() / 50);
+        canvasView.setStrokeWidth(seekBar.getProgress() * canvasView.getDefaultWidth() / 100);
     }
 }

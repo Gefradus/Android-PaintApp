@@ -43,7 +43,7 @@ public class CanvasView extends View
 
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
         _defaultWidth = defaultWidth;
-        _width = progress * defaultWidth / 50;
+        _width = progress * defaultWidth / 100;
     }
 
     public void setStrokeWidth(float width) {
