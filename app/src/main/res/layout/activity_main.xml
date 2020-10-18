@@ -58,6 +58,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/spray"/>
 
+
             <ImageButton
                 android:id="@+id/clearBtn"
                 android:layout_width="0dp"

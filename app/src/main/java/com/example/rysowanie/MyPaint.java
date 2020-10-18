@@ -14,7 +14,7 @@ class MyPaint extends Paint {
 
     private void checkIfSpray(boolean spray){
         if(spray) {
-            setPathEffect(new DashPathEffect(new float[] {5f,5f}, 0f));
+            setPathEffect(new DashPathEffect(new float[] {5f,5f}, 0));
             setStyle(Style.STROKE);
         }
     }

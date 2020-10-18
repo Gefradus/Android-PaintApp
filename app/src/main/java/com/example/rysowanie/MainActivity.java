@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         canvasView.setWidth(initialWidth);
         canvasView.setDefaultWidth(initialWidth);
         canvasView.setPaintStyle(Paint.Style.STROKE);
+
     }
 
     private void findAllViewsById(){

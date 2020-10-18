@@ -4,10 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.MotionEvent;
@@ -34,8 +32,11 @@ public class CanvasView extends View
     @Getter @Setter
     private boolean rubber;
     private boolean clear;
+    @Getter @Setter
     private List<Stroke> allStrokes;
+    @Getter @Setter
     private SparseArray<Stroke> activeStrokes;
+
 
     public void setDefaultWidthAndCountProgress(float defaultWidth, int progress) {
         this.defaultWidth = defaultWidth;
@@ -56,11 +57,12 @@ public class CanvasView extends View
             clear();
         }
         else {
-            drawNormalPath(canvas);
+            drawPath(canvas);
         }
     }
 
-    private void drawNormalPath(Canvas canvas){
+
+    private void drawPath(Canvas canvas){
         if (allStrokes != null) {
             for (Stroke stroke: allStrokes) {
                 if (stroke != null) {
@@ -79,51 +81,10 @@ public class CanvasView extends View
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        final int action = event.getActionMasked();
-        final int pointerCount = event.getPointerCount();
-
-        switch (action) {
-            case MotionEvent.ACTION_DOWN: {
-                pointDown((int) event.getX(), (int) event.getY(), event.getPointerId(0));
-                break;
-            }
-            case MotionEvent.ACTION_MOVE: {
-                for (int pc = 0; pc < pointerCount; pc++) {
-                    pointMove((int) event.getX(pc), (int) event.getY(pc), event.getPointerId(pc));
-                }
-                break;
-            }
-            case MotionEvent.ACTION_POINTER_DOWN: {
-                for (int pc = 0; pc < pointerCount; pc++) {
-                    pointDown((int) event.getX(pc), (int) event.getY(pc), event.getPointerId(pc));
-                }
-                break;
-            }
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_POINTER_UP: {
-                break;
-            }
-        }
-
+        new MotionEventHandler(allStrokes, activeStrokes, new MyPaint(paintStyle, width, color, spray))
+                .onTouchEventAction(event);
         invalidate();
         return true;
-    }
-
-    private void pointDown(int x, int y, int id) {
-        Point pt = new Point(x, y);
-        Stroke stroke = new Stroke(new MyPaint(paintStyle, width, color, spray));
-        stroke.addPoint(pt);
-        activeStrokes.put(id, stroke);
-        allStrokes.add(stroke);
-    }
-
-
-    private void pointMove(int x, int y, int id) {
-        Stroke stroke = activeStrokes.get(id);
-        if (stroke != null) {
-            Point pt = new Point(x, y);
-            stroke.addPoint(pt);
-        }
     }
 
     private void clear() {
