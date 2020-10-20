@@ -1,13 +1,16 @@
-package com.example.rysowanie;
+package com.example.rysowanie.Strategy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+
+import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.Listener.DialogConfirmClickListener;
 import com.example.rysowanie.Listener.DialogDismissListener;
+import com.example.rysowanie.R;
 
-public class ConfirmSaveDialog
+class SaveClickedStrategy
 {
-    public ConfirmSaveDialog(final Activity activity, final CanvasView view)
+    SaveClickedStrategy(final Activity activity, final CanvasView view)
     {
         DialogDismissListener dismiss = new DialogDismissListener();
 

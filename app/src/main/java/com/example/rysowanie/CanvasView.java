@@ -61,7 +61,6 @@ public class CanvasView extends View
         }
     }
 
-
     private void drawPath(Canvas canvas){
         if (allStrokes != null) {
             for (Stroke stroke: allStrokes) {
