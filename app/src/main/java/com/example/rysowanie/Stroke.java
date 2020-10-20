@@ -5,7 +5,6 @@ import android.graphics.Path;
 import android.graphics.Point;
 import lombok.Getter;
 
-
 class Stroke {
     @Getter
     private Path path;

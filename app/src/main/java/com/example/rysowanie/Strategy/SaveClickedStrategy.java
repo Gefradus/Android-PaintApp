@@ -3,7 +3,6 @@ package com.example.rysowanie.Strategy;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.widget.SeekBar;
-
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.Listener.DialogConfirmClickListener;
 import com.example.rysowanie.Listener.DialogDismissListener;

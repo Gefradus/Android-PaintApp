@@ -9,10 +9,8 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class DialogConfirmClickListener implements DialogInterface.OnClickListener {
-
     private Activity _activity;
     private CanvasView view;
-
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {

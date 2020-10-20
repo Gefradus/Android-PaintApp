@@ -34,13 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
         findAllViewsById();
+        init();
         setListeners();
     }
 
     private void init() {
-        canvasView = findViewById(R.id.canvas);
         canvasView.setColor(Color.BLACK);
         canvasView.setDefaultColor(Color.BLACK);
         canvasView.setWidth(initialWidth);
@@ -50,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void findAllViewsById(){
+        canvasView = findViewById(R.id.canvas);
         strokeWidthBar = findViewById(R.id.strokeWidthBar);
         pencilBtn = findViewById(R.id.pencilBtn);
         rubberBtn = findViewById(R.id.rubberBtn);
