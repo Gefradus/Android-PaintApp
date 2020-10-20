@@ -10,8 +10,14 @@ import android.widget.SeekBar;
 import com.divyanshu.colorseekbar.ColorSeekBar;
 import com.example.rysowanie.Listener.ColorSeekBarChangeListener;
 import com.example.rysowanie.Listener.StrokeWidthBarChangeListener;
-import com.example.rysowanie.Strategy.ButtonClickedStrategyEnum;
+import com.example.rysowanie.Strategy.ClearClickedStrategy;
+import com.example.rysowanie.Strategy.FillClickedStrategy;
 import com.example.rysowanie.Strategy.IButtonClickedStrategy;
+import com.example.rysowanie.Strategy.PencilClickedStrategy;
+import com.example.rysowanie.Strategy.RubberClickedStrategy;
+import com.example.rysowanie.Strategy.SaveClickedStrategy;
+import com.example.rysowanie.Strategy.SprayClickedStrategy;
+
 import lombok.Getter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -66,22 +72,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         IButtonClickedStrategy strategy;
 
         if(id == R.id.pencilBtn) {
-            strategy = ButtonClickedStrategyEnum.pencil;
+            strategy = new PencilClickedStrategy();
         }
         else if(id == R.id.rubberBtn) {
-            strategy = ButtonClickedStrategyEnum.rubber;
+            strategy = new RubberClickedStrategy();
         }
         else if(id == R.id.clearBtn) {
-            strategy = ButtonClickedStrategyEnum.clear;
+            strategy = new ClearClickedStrategy();
         }
         else if(id == R.id.fillBtn) {
-            strategy = ButtonClickedStrategyEnum.fill;
+            strategy = new FillClickedStrategy();
         }
         else if(id == R.id.sprayBtn) {
-            strategy = ButtonClickedStrategyEnum.spray;
+            strategy = new SprayClickedStrategy();
         }
         else {
-            strategy = ButtonClickedStrategyEnum.save;
+            strategy = new SaveClickedStrategy();
         }
 
         strategy.onClickAction(canvasView, strokeWidthBar, this);

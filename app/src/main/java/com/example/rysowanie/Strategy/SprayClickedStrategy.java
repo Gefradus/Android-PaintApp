@@ -1,9 +1,13 @@
 package com.example.rysowanie.Strategy;
 
+import android.app.Activity;
+import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
 
-class SprayClickedStrategy {
-    SprayClickedStrategy(CanvasView canvasView){
+public class SprayClickedStrategy implements IButtonClickedStrategy {
+
+    @Override
+    public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity) {
         canvasView.setSpray(true);
     }
 }

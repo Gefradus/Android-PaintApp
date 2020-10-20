@@ -2,16 +2,17 @@ package com.example.rysowanie.Strategy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.widget.SeekBar;
 
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.Listener.DialogConfirmClickListener;
 import com.example.rysowanie.Listener.DialogDismissListener;
 import com.example.rysowanie.R;
 
-class SaveClickedStrategy
+public class SaveClickedStrategy implements IButtonClickedStrategy
 {
-    SaveClickedStrategy(final Activity activity, final CanvasView view)
-    {
+    @Override
+    public void onClickAction(CanvasView view, SeekBar seekBar, Activity activity) {
         DialogDismissListener dismiss = new DialogDismissListener();
 
         new AlertDialog.Builder(view.getContext())
@@ -22,5 +23,4 @@ class SaveClickedStrategy
                 .create()
                 .show();
     }
-
 }
