@@ -1,9 +1,10 @@
-package com.example.rysowanie.Listener;
+package com.example.rysowanie.listener;
 
 import android.widget.SeekBar;
 import com.divyanshu.colorseekbar.ColorSeekBar;
 import com.example.rysowanie.CanvasView;
-import com.example.rysowanie.MainActivity;
+import com.example.rysowanie.activity.MainActivity;
+
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

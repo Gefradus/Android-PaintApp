@@ -58,6 +58,15 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/spray"/>
 
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_button"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back"/>
 
             <ImageButton
                 android:id="@+id/clearBtn"
@@ -66,6 +75,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/my_button"
                 android:src="@android:drawable/ic_delete" />
+
+
         </LinearLayout>
 
         <LinearLayout

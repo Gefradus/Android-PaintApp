@@ -13,7 +13,7 @@ public class SaveImageFromCanvasViewToGallery
 {
     public SaveImageFromCanvasViewToGallery(Activity activity, CanvasView canvasView)
     {
-        File file = createFile(activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+        File file = FilePathHandler.createFile(activity);
 
         try {
             file.createNewFile();
@@ -26,16 +26,6 @@ public class SaveImageFromCanvasViewToGallery
         catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private File createFile(String path)
-    {
-        int i = 0;
-        File file = null;
-        while(i == 0 || file.exists()) {
-            file = new File(path + "/image" + ++i + ".png");
-        }
-        return file;
     }
 
     private Bitmap getBitmapFromView(View view)

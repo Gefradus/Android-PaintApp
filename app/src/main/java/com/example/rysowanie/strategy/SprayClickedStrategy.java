@@ -1,14 +1,13 @@
-package com.example.rysowanie.Strategy;
+package com.example.rysowanie.strategy;
 
 import android.app.Activity;
 import android.widget.SeekBar;
-
 import com.example.rysowanie.CanvasView;
 
-public class ClearClickedStrategy implements IButtonClickedStrategy {
+public class SprayClickedStrategy implements IButtonClickedStrategy {
 
     @Override
     public void onClickAction(CanvasView canvasView, SeekBar seekBar, Activity activity) {
-        canvasView.clearAll();
+        canvasView.setSpray(true);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.rysowanie.Strategy;
+package com.example.rysowanie.strategy;
 
 import android.app.Activity;
 import android.widget.SeekBar;

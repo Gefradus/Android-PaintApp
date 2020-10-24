@@ -2,9 +2,9 @@ package com.example.rysowanie;
 
 import android.view.View;
 
-class OnClickListenerSetter
+public class OnClickListenerSetter
 {
-    OnClickListenerSetter(View.OnClickListener listener, View... buttons) {
+   public OnClickListenerSetter(View.OnClickListener listener, View... buttons) {
         for(View btn : buttons){
             btn.setOnClickListener(listener);
         }

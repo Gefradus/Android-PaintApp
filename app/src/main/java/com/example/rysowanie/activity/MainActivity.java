@@ -1,4 +1,4 @@
-package com.example.rysowanie;
+package com.example.rysowanie.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
@@ -8,25 +8,32 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import com.divyanshu.colorseekbar.ColorSeekBar;
-import com.example.rysowanie.Listener.ColorSeekBarChangeListener;
-import com.example.rysowanie.Listener.StrokeWidthBarChangeListener;
-import com.example.rysowanie.Strategy.ClearClickedStrategy;
-import com.example.rysowanie.Strategy.FillClickedStrategy;
-import com.example.rysowanie.Strategy.IButtonClickedStrategy;
-import com.example.rysowanie.Strategy.PencilClickedStrategy;
-import com.example.rysowanie.Strategy.RubberClickedStrategy;
-import com.example.rysowanie.Strategy.SaveClickedStrategy;
-import com.example.rysowanie.Strategy.SprayClickedStrategy;
-
+import com.example.rysowanie.CanvasView;
+import com.example.rysowanie.ChooseColoringPage;
+import com.example.rysowanie.LoadImageFromFile;
+import com.example.rysowanie.OnClickListenerSetter;
+import com.example.rysowanie.R;
+import com.example.rysowanie.listener.ColorSeekBarChangeListener;
+import com.example.rysowanie.listener.StrokeWidthBarChangeListener;
+import com.example.rysowanie.strategy.BackClickedStrategy;
+import com.example.rysowanie.strategy.ClearClickedStrategy;
+import com.example.rysowanie.strategy.FillClickedStrategy;
+import com.example.rysowanie.strategy.IButtonClickedStrategy;
+import com.example.rysowanie.strategy.PencilClickedStrategy;
+import com.example.rysowanie.strategy.RubberClickedStrategy;
+import com.example.rysowanie.strategy.SaveClickedStrategy;
+import com.example.rysowanie.strategy.SprayClickedStrategy;
 import lombok.Getter;
+import lombok.Setter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Getter
     private static final float initialWidth = 7f;
+    @Setter @Getter
     private CanvasView canvasView;
     private SeekBar strokeWidthBar;
-    private ImageButton pencilBtn, rubberBtn, clearBtn, fillBtn, saveBtn, sprayBtn;
+    private ImageButton pencilBtn, rubberBtn, clearBtn, fillBtn, saveBtn, sprayBtn, backBtn;
     private ColorSeekBar colorSeekBar;
 
 
@@ -37,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findAllViewsById();
         init();
         setListeners();
+        new ChooseColoringPage(this);
     }
 
     private void init() {
@@ -45,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         canvasView.setWidth(initialWidth);
         canvasView.setDefaultWidth(initialWidth);
         canvasView.setPaintStyle(Paint.Style.STROKE);
-
     }
 
     private void findAllViewsById(){
@@ -58,10 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fillBtn = findViewById(R.id.fillBtn);
         saveBtn = findViewById(R.id.saveBtn);
         sprayBtn = findViewById(R.id.sprayBtn);
+        backBtn = findViewById(R.id.backBtn);
     }
 
     private void setListeners(){
-        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, fillBtn, saveBtn, sprayBtn);
+        new OnClickListenerSetter(this, clearBtn, pencilBtn, rubberBtn, fillBtn, saveBtn, sprayBtn, backBtn);
         strokeWidthBar.setOnSeekBarChangeListener(new StrokeWidthBarChangeListener(canvasView));
         colorSeekBar.setOnColorChangeListener(new ColorSeekBarChangeListener(canvasView, strokeWidthBar));
     }
@@ -85,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if(id == R.id.sprayBtn) {
             strategy = new SprayClickedStrategy();
+        }
+        else if(id == R.id.backBtn){
+            strategy = new BackClickedStrategy();
         }
         else {
             strategy = new SaveClickedStrategy();

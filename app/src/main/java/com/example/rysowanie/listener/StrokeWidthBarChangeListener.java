@@ -1,4 +1,4 @@
-package com.example.rysowanie.Listener;
+package com.example.rysowanie.listener;
 import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
 import lombok.AllArgsConstructor;

@@ -1,11 +1,11 @@
-package com.example.rysowanie.Strategy;
+package com.example.rysowanie.strategy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.widget.SeekBar;
 import com.example.rysowanie.CanvasView;
-import com.example.rysowanie.Listener.DialogConfirmClickListener;
-import com.example.rysowanie.Listener.DialogDismissListener;
+import com.example.rysowanie.listener.DialogConfirmClickListener;
+import com.example.rysowanie.listener.DialogDismissListener;
 import com.example.rysowanie.R;
 
 public class SaveClickedStrategy implements IButtonClickedStrategy

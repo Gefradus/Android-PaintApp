@@ -5,17 +5,17 @@ import android.graphics.Path;
 import android.graphics.Point;
 import lombok.Getter;
 
-class Stroke {
+public class Stroke {
     @Getter
     private Path path;
     @Getter
     private Paint paint;
 
-     Stroke (Paint paint) {
+    public Stroke (Paint paint) {
         this.paint = paint;
     }
 
-     void addPoint(Point pt) {
+    public void addPoint(Point pt) {
         if (path == null) {
             path = new Path();
             path.moveTo(pt.x, pt.y);
