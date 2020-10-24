@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.rysowanie.OnClickListenerSetter;
 import com.example.rysowanie.R;
 
-
 @SuppressLint("Registered")
 public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,12 +30,13 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent;
         if(id == R.id.defaultPaintingBtn){
+            intent = new Intent(this, MainActivity.class);
             intent.putExtra("coloringPage", 0);
         }
         else{
-            intent.putExtra("coloringPage", 1);
+            intent = new Intent(this, SelectColoringPageActivity.class);
         }
         startActivity(intent);
     }

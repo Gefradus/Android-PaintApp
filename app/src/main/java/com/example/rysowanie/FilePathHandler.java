@@ -5,8 +5,8 @@ import android.os.Environment;
 
 import java.io.File;
 
-public class FilePathHandler {
-    public static File createFile(Activity activity)
+class FilePathHandler {
+    static File createFile(Activity activity)
     {
         int i = 0;
         File file = null;

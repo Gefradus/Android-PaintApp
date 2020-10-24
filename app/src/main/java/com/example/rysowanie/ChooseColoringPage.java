@@ -7,19 +7,19 @@ public class ChooseColoringPage
     public ChooseColoringPage(MainActivity activity)
     {
         int paintingPageEnum = activity.getIntent().getExtras().getInt("coloringPage");
-        String imageName = null;
+        int id = 0;
 
         if(paintingPageEnum != 0) {
             if (paintingPageEnum == 1) {
-                imageName = "/image1.png";
+                id = R.drawable.kolorowanka1;
             } else if (paintingPageEnum == 2) {
-                imageName = "/image2.png";
+                id = R.drawable.kolorowanka2;
             } else if (paintingPageEnum == 3) {
-                imageName = "/image3.png";
+                id = R.drawable.kolorowanka3;
             } else if (paintingPageEnum == 4) {
-                imageName = "/image4.png";
+                id = R.drawable.kolorowanka4;
             }
-            new LoadImageFromFile(activity, activity.getCanvasView(), imageName);
+            new LoadImageFromFile(activity, activity.getCanvasView(), id);
         }
     }
 }

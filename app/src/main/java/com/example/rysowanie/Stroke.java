@@ -11,11 +11,11 @@ public class Stroke {
     @Getter
     private Paint paint;
 
-    public Stroke (Paint paint) {
+    Stroke(Paint paint) {
         this.paint = paint;
     }
 
-    public void addPoint(Point pt) {
+    void addPoint(Point pt) {
         if (path == null) {
             path = new Path();
             path.moveTo(pt.x, pt.y);

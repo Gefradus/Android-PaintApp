@@ -4,18 +4,17 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Environment;
 import android.util.DisplayMetrics;
 
 public class LoadImageFromFile {
-    public LoadImageFromFile(Activity activity, CanvasView canvasView, String imageName) {
-        Bitmap bitmap = createBitmapFromFile(activity, imageName);
+    LoadImageFromFile(Activity activity, CanvasView canvasView, int imageId) {
+        Bitmap bitmap = createBitmapFromFile(activity, imageId);
         canvasView.setBackgroundDrawable(new BitmapDrawable(bitmap));
     }
 
-    private Bitmap createBitmapFromFile(Activity activity, String imageName)
+    private Bitmap createBitmapFromFile(Activity activity, int imageId)
     {
-        Bitmap bitmap = BitmapFactory.decodeFile(activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + imageName, new BitmapFactory.Options());
+        Bitmap bitmap = BitmapFactory.decodeResource(activity.getResources(), imageId);
         bitmap = Bitmap.createScaledBitmap(bitmap, getCanvasWidth(activity), getCanvasHeight(activity), true);
         return bitmap;
     }
