@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.rysowanie.OnClickListenerSetter;
 import com.example.rysowanie.R;
 
-public class SelectColoringPageActivity  extends AppCompatActivity implements View.OnClickListener {
+public class SelectColoringPageActivity  extends AppCompatActivity implements View.OnClickListener
+{
     private ImageView image1, image2, image3, image4;
 
     private void findAllViewsById(){
@@ -28,17 +29,8 @@ public class SelectColoringPageActivity  extends AppCompatActivity implements Vi
 
     @Override
     public void onClick(View view) {
-        int id = view.getId();
         Intent intent = new Intent(this, MainActivity.class);
-        if(id == R.id.image1){
-            intent.putExtra("coloringPage", 1);
-        } else if(id == R.id.image2){
-            intent.putExtra("coloringPage", 2);
-        } else if(id == R.id.image3){
-            intent.putExtra("coloringPage", 3);
-        } else {
-            intent.putExtra("coloringPage", 4);
-        }
+        intent.putExtra("coloringPage", view.getId());
         startActivity(intent);
     }
 }

@@ -10,13 +10,13 @@ public class ChooseColoringPage
         int id = 0;
 
         if(paintingPageEnum != 0) {
-            if (paintingPageEnum == 1) {
+            if (paintingPageEnum == R.id.image1) {
                 id = R.drawable.kolorowanka1;
-            } else if (paintingPageEnum == 2) {
+            } else if (paintingPageEnum == R.id.image2) {
                 id = R.drawable.kolorowanka2;
-            } else if (paintingPageEnum == 3) {
+            } else if (paintingPageEnum == R.id.image3) {
                 id = R.drawable.kolorowanka3;
-            } else if (paintingPageEnum == 4) {
+            } else if (paintingPageEnum == R.id.image4) {
                 id = R.drawable.kolorowanka4;
             }
             new LoadImageFromFile(activity, activity.getCanvasView(), id);
