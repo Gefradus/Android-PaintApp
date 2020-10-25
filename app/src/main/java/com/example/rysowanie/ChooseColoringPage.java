@@ -1,7 +1,6 @@
 package com.example.rysowanie;
 
 import com.example.rysowanie.activity.MainActivity;
-
 import java.util.Objects;
 
 public class ChooseColoringPage
@@ -21,7 +20,13 @@ public class ChooseColoringPage
             } else if (paintingPageEnum == R.id.image4) {
                 id = R.drawable.kolorowanka4;
             }
-            new LoadImageFromFile(activity, activity.getCanvasView(), id);
+            new LoadImageFromFile(activity, id);
+        }
+        else {
+            String filePath = activity.getIntent().getExtras().getString("imagePath");
+            if(!filePath.equals("")){
+                new LoadImageFromFile(activity, filePath);
+            }
         }
     }
 }

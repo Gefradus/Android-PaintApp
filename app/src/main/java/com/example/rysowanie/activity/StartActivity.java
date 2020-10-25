@@ -33,15 +33,14 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        Intent intent;
         if(id == R.id.defaultPaintingBtn){
-            intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("coloringPage", 0);
+            intent.putExtra("imagePath", "");
             startActivity(intent);
         }
         else if(id == R.id.coloringPageBtn){
-            intent = new Intent(this, SelectColoringPageActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(this, SelectColoringPageActivity.class));
         }
         else {
             new MyMaterialFilePicker(this);
@@ -52,7 +51,10 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1000 && resultCode == RESULT_OK) {
-            String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("coloringPage", 0);
+            intent.putExtra("imagePath", data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH));
+            startActivity(intent);
         }
     }
 

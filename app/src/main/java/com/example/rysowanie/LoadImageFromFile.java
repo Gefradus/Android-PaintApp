@@ -6,17 +6,29 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 
+import com.example.rysowanie.activity.MainActivity;
+
 public class LoadImageFromFile {
-    LoadImageFromFile(Activity activity, CanvasView canvasView, int imageId) {
-        Bitmap bitmap = createBitmapFromFile(activity, imageId);
-        canvasView.setBackgroundDrawable(new BitmapDrawable(bitmap));
+    LoadImageFromFile(MainActivity activity, int imageId) {
+        activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromResourceFile(activity, imageId)));
     }
 
-    private Bitmap createBitmapFromFile(Activity activity, int imageId)
+    LoadImageFromFile(MainActivity activity, String imagePath){
+        activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromMemoryFile(activity, imagePath)));
+    }
+
+    private Bitmap createBitmapFromResourceFile(Activity activity, int imageId)
     {
-        Bitmap bitmap = BitmapFactory.decodeResource(activity.getResources(), imageId);
-        bitmap = Bitmap.createScaledBitmap(bitmap, getCanvasWidth(activity), getCanvasHeight(activity), true);
-        return bitmap;
+        return createScaledBitmap(activity, BitmapFactory.decodeResource(activity.getResources(), imageId));
+    }
+
+    private Bitmap createBitmapFromMemoryFile(Activity activity, String path)
+    {
+        return createScaledBitmap(activity, BitmapFactory.decodeFile(path));
+    }
+
+    private Bitmap createScaledBitmap(Activity activity, Bitmap bitmap){
+        return Bitmap.createScaledBitmap(bitmap, getCanvasWidth(activity), getCanvasHeight(activity), true);
     }
 
     private int getCanvasWidth(Activity activity) {
