@@ -2,12 +2,14 @@ package com.example.rysowanie;
 
 import com.example.rysowanie.activity.MainActivity;
 
+import java.util.Objects;
+
 public class ChooseColoringPage
 {
     public ChooseColoringPage(MainActivity activity)
     {
-        int paintingPageEnum = activity.getIntent().getExtras().getInt("coloringPage");
-        
+        int paintingPageEnum = Objects.requireNonNull(activity.getIntent().getExtras()).getInt("coloringPage");
+
         if(paintingPageEnum != 0) {
             int id = 0;
             if (paintingPageEnum == R.id.image1) {

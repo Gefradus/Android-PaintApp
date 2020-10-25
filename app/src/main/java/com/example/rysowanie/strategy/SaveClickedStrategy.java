@@ -16,8 +16,8 @@ public class SaveClickedStrategy implements IButtonClickedStrategy
 
         new AlertDialog.Builder(view.getContext())
                 .setMessage(R.string.confirm)
-                .setPositiveButton(R.string.yes, new DialogConfirmClickListener(activity, view))
-                .setNegativeButton(android.R.string.cancel, dismiss)
+                .setPositiveButton(R.string.save, new DialogConfirmClickListener(activity, view))
+                .setNegativeButton(R.string.cancel, dismiss)
                 .setOnCancelListener(dismiss)
                 .create()
                 .show();

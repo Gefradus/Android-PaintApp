@@ -18,10 +18,17 @@
             android:text="Kolorowanki" />
 
         <Button
+            android:id="@+id/loadImageBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wczytaj obrazek" />
+
+        <Button
             android:id="@+id/defaultPaintingBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Zwykłe rysowanie" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.example.rysowanie;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 import java.io.File;

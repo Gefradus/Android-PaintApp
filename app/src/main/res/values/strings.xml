@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Rysowanie</string>
     <string name="confirm">Czy chcesz zapisać swoją pracę?</string>
-    <string name="yes">Tak</string>
+    <string name="save">Zapisz</string>
+    <string name="cancel">Anuluj</string>>
     <string name="wybierz_kolorowank">Wybierz kolorowankę</string>
 </resources>
