@@ -17,13 +17,11 @@ public class LoadImageFromFile {
         activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromMemoryFile(activity, imagePath)));
     }
 
-    private Bitmap createBitmapFromResourceFile(Activity activity, int imageId)
-    {
+    private Bitmap createBitmapFromResourceFile(Activity activity, int imageId) {
         return createScaledBitmap(activity, BitmapFactory.decodeResource(activity.getResources(), imageId));
     }
 
-    private Bitmap createBitmapFromMemoryFile(Activity activity, String path)
-    {
+    private Bitmap createBitmapFromMemoryFile(Activity activity, String path) {
         return createScaledBitmap(activity, BitmapFactory.decodeFile(path));
     }
 
