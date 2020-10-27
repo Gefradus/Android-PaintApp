@@ -5,23 +5,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
-
 import com.example.rysowanie.activity.MainActivity;
 
-public class LoadImageFromFile {
-    LoadImageFromFile(MainActivity activity, int imageId) {
-        activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromResourceFile(activity, imageId)));
+public class LoadImage {
+    LoadImage(MainActivity activity, int imageId) {
+        activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromResource(activity, imageId)));
     }
 
-    LoadImageFromFile(MainActivity activity, String imagePath){
-        activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromMemoryFile(activity, imagePath)));
+    LoadImage(MainActivity activity, String imagePath){
+        activity.getCanvasView().setBackgroundDrawable(new BitmapDrawable(createBitmapFromFile(activity, imagePath)));
     }
 
-    private Bitmap createBitmapFromResourceFile(Activity activity, int imageId) {
+    private Bitmap createBitmapFromResource(Activity activity, int imageId) {
         return createScaledBitmap(activity, BitmapFactory.decodeResource(activity.getResources(), imageId));
     }
 
-    private Bitmap createBitmapFromMemoryFile(Activity activity, String path) {
+    private Bitmap createBitmapFromFile(Activity activity, String path) {
         return createScaledBitmap(activity, BitmapFactory.decodeFile(path));
     }
 

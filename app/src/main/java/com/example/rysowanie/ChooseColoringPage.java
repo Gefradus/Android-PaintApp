@@ -20,12 +20,12 @@ public class ChooseColoringPage
             } else if (paintingPageEnum == R.id.image4) {
                 id = R.drawable.kolorowanka4;
             }
-            new LoadImageFromFile(activity, id);
+            new LoadImage(activity, id);
         }
         else {
             String filePath = activity.getIntent().getExtras().getString("imagePath");
             if(!filePath.equals("")){
-                new LoadImageFromFile(activity, filePath);
+                new LoadImage(activity, filePath);
             }
         }
     }

@@ -10,7 +10,6 @@ import android.widget.SeekBar;
 import com.divyanshu.colorseekbar.ColorSeekBar;
 import com.example.rysowanie.CanvasView;
 import com.example.rysowanie.ChooseColoringPage;
-import com.example.rysowanie.LoadImageFromFile;
 import com.example.rysowanie.OnClickListenerSetter;
 import com.example.rysowanie.R;
 import com.example.rysowanie.listener.ColorSeekBarChangeListener;

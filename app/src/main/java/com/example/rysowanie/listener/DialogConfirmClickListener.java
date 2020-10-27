@@ -3,7 +3,7 @@ package com.example.rysowanie.listener;
 import android.app.Activity;
 import android.content.DialogInterface;
 import com.example.rysowanie.CanvasView;
-import com.example.rysowanie.SaveImageFromCanvasViewToGallery;
+import com.example.rysowanie.SaveImage;
 
 import lombok.AllArgsConstructor;
 
@@ -14,6 +14,6 @@ public class DialogConfirmClickListener implements DialogInterface.OnClickListen
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
-        new SaveImageFromCanvasViewToGallery(_activity, view);
+        new SaveImage(_activity, view);
     }
 }
