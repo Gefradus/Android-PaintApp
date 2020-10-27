@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,25 +10,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/coloringPageBtn"
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Kolorowanki" />
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/unicorn" />
 
-        <Button
-            android:id="@+id/loadImageBtn"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wczytaj obrazek" />
+            android:layout_height="match_parent"
+            android:background="@drawable/tools_panel"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/defaultPaintingBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Zwykłe rysowanie" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/coloringPageBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_green_light"
+                    android:text="Kolorowanki" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/loadImageBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_orange_light"
+                    android:text="Wczytaj obrazek" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/defaultPaintingBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_purple"
+                    android:text="Zwykłe rysowanie" />
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
